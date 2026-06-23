@@ -18,5 +18,5 @@ void loop() {
     Serial2.println(currentState ? "ON" : "OFF");
     lastState = currentState;
   }
-  delay(200);
+  delay(500);
 }
