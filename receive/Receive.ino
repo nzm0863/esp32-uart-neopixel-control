@@ -17,17 +17,28 @@ void setup() {
 }
 
 void loop() {
+  if(Serial2.available()){
+    Serial.print("ok");
+  }else{
+    Serial.print("ng");
+  }
+
 
   while (Serial2.available()) {
     String msg = Serial2.readStringUntil('\n');
     msg.trim();
+    int LEDCount=msg.toInt();
     Serial.print("受信:");
-    Serial.println("[" + msg + "]");
-    if (msg == "ON") {
-      strip.setPixelColor(0, 255, 255, 255);
-    } else {
-      strip.clear();
+    Serial.println(LEDCount);
+    strip.clear();
+    for(int i=0;i<LEDCount;i++){
+      strip.setPixelColor(i, 255, 255, 255);
     }
+    // if (msg == "ON") {
+    //   strip.setPixelColor(0, 255, 255, 255);
+    // } else {
+    //   strip.clear();
+    // }
   }
   strip.show();
   delay(1000);
