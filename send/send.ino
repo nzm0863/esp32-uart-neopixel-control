@@ -35,5 +35,8 @@ void loop() {
     8);
 
   Serial2.println(LEDCount);
+  Serial.println(LEDCount);
+  Serial.println(sensorValue);
+
   delay(500);
 }
